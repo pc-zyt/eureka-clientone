@@ -1,0 +1,17 @@
+spring:
+  profiles: dev
+server:
+  hostname: eurekaServer1
+  port: 1002
+eureka:
+  instance:
+    #eureka服务器的标识，如果是集群就可以写成 eurekaSer1,eurekaSer2,eurekaSer3..
+    hostname: ${server.hostname}
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    #开启客户端存活状态监测 
+    healthcheck:
+      enabled: true
+    serviceUrl:
+      defaultZone: http://127.0.0.1:1001/eureka/,http://127.0.0.1:1003/eureka/
